@@ -7,8 +7,8 @@ angular.
       addClass: animateIn,
       removeClass: animateOut
     };
-
-    function animateIn(element, className, done) {
+    //todo: fix element: JQuery typings (angular-animate)
+    function animateIn(element: any, className: string, done: Function) {
       if (className !== 'selected') return;
 
       element.css({
@@ -20,12 +20,12 @@ angular.
         top: 0
       }, done);
 
-      return function animateInEnd(wasCanceled) {
+      return (wasCanceled: boolean) => {
         if (wasCanceled) element.stop();
       };
     }
 
-    function animateOut(element, className, done) {
+    function animateOut(element: any, className: string, done: Function) {
       if (className !== 'selected') return;
 
       element.css({
@@ -36,7 +36,7 @@ angular.
         top: -500
       }, done);
 
-      return function animateOutEnd(wasCanceled) {
+      return (wasCanceled: boolean) => {
         if (wasCanceled) element.stop();
       };
     }
